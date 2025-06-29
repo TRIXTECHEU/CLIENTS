@@ -21,7 +21,7 @@ window.LoadingAnimationExtension = {
         },
         rewrite: ['Připravuji výstižnější odpověď.'],
         output: {
-          SMT: ['Tvorím odpoveď.'],
+          SMT: ['Tvořím odpověď.'],
           KB_WS: [
             'Hledám v databázi Twineru.',
             'Získávám relevantní informace.',
@@ -216,7 +216,7 @@ window.LoadingAnimationExtension = {
       const spinnerAnimationContainer = document.createElement('div');
       spinnerAnimationContainer.className = 'rotating-point-spinner';
 
-      spinnerAnimationContainer.style.setProperty('--spinner-point-colour', '#00703c');
+      spinnerAnimationContainer.style.setProperty('--spinner-point-colour', '#25931F');
 
       loadingBox.appendChild(spinnerAnimationContainer);
 
