@@ -216,7 +216,7 @@ window.LoadingAnimationExtension = {
       const spinnerAnimationContainer = document.createElement('div');
       spinnerAnimationContainer.className = 'rotating-point-spinner';
 
-      spinnerAnimationContainer.style.setProperty('--spinner-point-colour', '#162997');
+      spinnerAnimationContainer.style.setProperty('--spinner-point-colour', '#1594d6');
 
       loadingBox.appendChild(spinnerAnimationContainer);
 
