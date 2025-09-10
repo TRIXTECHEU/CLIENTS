@@ -1,0 +1,307 @@
+/* TrixTech s.r.o. @2025 */
+
+/* 0) Layering */
+/* Keep the chat widget above all page content */
+.vfrc-widget {
+  z-index: 999999 !important;
+}
+
+/* 1) Header */
+/* Header color */
+.jyiuei2 {
+  background-color: #FFF !important;
+}
+
+/* Header avatar */
+div[class*="vfrc-header"] img.vfrc-avatar {
+  display: block !important;
+  width: 160px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  transform: translateX(-2%) !important;
+  border-radius: 0 !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  -webkit-user-drag: none !important;
+}
+
+/* Header icons: replace inline SVG*/
+.vfrc-header .vfrc-icon._1t7e06e0 svg {
+  display: none !important;
+}
+
+.vfrc-header .vfrc-icon._1t7e06e0::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) scale(1.2) !important;
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url('https://i.imgur.com/oT0R5mf.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  will-change: transform, filter !important;
+  transition: transform 0.6s ease-in-out, filter 0.8s ease-in-out !important;
+  filter: brightness(1) !important;
+}
+
+.vfrc-header button:nth-of-type(1) .vfrc-icon._1t7e06e0::before {
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url('https://i.imgur.com/oT0R5mf.png') !important;
+}
+
+.vfrc-header button:nth-of-type(1) .vfrc-icon._1t7e06e0:hover::before {
+  transform: translate(-50%, -50%) scale(1.4) rotate(-180deg) !important;
+  filter: brightness(1.1) !important;
+}
+
+.vfrc-header button:nth-of-type(2) .vfrc-icon._1t7e06e0::before {
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url('https://i.imgur.com/gcUOEV2.png') !important;
+}
+
+.vfrc-header button:nth-of-type(2) .vfrc-icon._1t7e06e0:hover::before {
+  transform: translate(-50%, -50%) scale(1.42) !important;
+  filter: brightness(1.1) !important;
+}
+
+._1t7e06e0 {
+  transform: translateX(-0.25px) !important;
+}
+
+@media (min-width: 1440px) {
+  .vfrc-header button:nth-of-type(1) .vfrc-icon._1t7e06e0::before {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* 2) Buttons (system labels) */
+/* CZ label overrides: replace built-in text */
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat), button.vfrc-button[label="Cancel"] {
+  position: relative !important;
+  color: transparent !important;
+  transition: background-color .2s ease, color .2s ease !important;
+}
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat) span, button.vfrc-button[label="Cancel"] span {
+  display: none !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat)::before {
+  content: "Spustit nový chat" !important;
+  position: absolute !important;
+  top: 50% !important; left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: #FFF !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  font-family: inherit !important;
+  pointer-events: none !important;
+  white-space: nowrap !important;
+}
+
+button.vfrc-button[label="Cancel"]::before {
+  content: "Zrušit" !important;
+  position: absolute !important;
+  top: 50% !important; left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: #1a1e23 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  font-family: inherit !important;
+  pointer-events: none !important;
+  white-space: nowrap !important;
+}
+
+/* 3) Chat chrome */
+/* Chat background */
+:is(.vfrc-chat, .s9t60i1, .vfrc-chat__dialog) {
+  background-image: url("https://i.imgur.com/BQwinZq.jpeg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+}
+
+/* Chat border */
+.s9t60i0 {
+  border: 2px solid #000 !important;
+  border-radius: 25px !important;
+}
+
+/* 4) Typography & bubbles */
+/* Text alignment in chat */
+:is(.vfrc-message,[class*="vfrc-chat-dialog"],[class*="knxm730"],[class*="_15emaa"],[class*="vfrc-user-response"],[class*="vfrc-system-response"],[class*="g3dqfd"],[class*="response-content"],[class*="streaming-response-container"]) {
+  text-align: left !important;
+}
+
+.vfrc-message, .vfrc-message * {
+  text-align: left !important;
+}
+
+.vfrc-message > * { 
+  margin-left: 0 !important; 
+}
+
+:is(div[class*="vfrc-message _11kfxpg0"], ._15emaa41, ._1lbxmyd0, .g3dqfd8) {
+  border-radius: 15px !important;
+}
+
+/* 6) System states */
+/* End-of-chat label */ 
+.ticwq62 {
+  font-size: 0 !important;
+  position: relative !important;
+  line-height: 0 !important;
+  background-color: transparent !important;
+}
+
+.ticwq62::before {
+  content: "Chat byl ukončen" !important;
+  display: inline-block !important;
+  position: relative !important;
+  font-size: 11.5px !important;
+  line-height: 1.4 !important;
+  color: #656d75 !important;
+  white-space: nowrap !important;
+}
+
+/* 7) Carousel */
+/* Carousel custom formatting */
+._1lbxmyd1 {
+  display: block !important;
+  width: calc(100% - 30px) !important;
+  margin: 15px 15px 0 !important;
+  height: 170px !important;
+  object-fit: cover !important;
+  border-radius: 15px 15px 0 0 !important;
+  box-sizing: border-box !important;
+  -webkit-user-drag: none !important;
+}
+
+/* Carousel description */
+.vfrc-card--description._1lbxmyd5 {
+  font-size: 12.5px !important;
+}
+
+/* Carousel main buttons */
+/* Carousel next buttons */
+.betklmg {
+  background-color: #FFF !important;
+  border: solid 2px #000 !important;
+}
+
+.betklm4 {
+  height: auto !important;
+  width: 50px !important;
+}
+
+:is(.betklma, .betklm4, .betklm6, .betklm7) svg {
+  background-color: #FFF !important;
+  background-image: url("https://i.imgur.com/pSUcCst.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 24px 24px !important;
+  translate: -3% !important;
+}
+
+:is(.betklmc, .betklm5) svg {
+  background-color: #FFF !important;
+  background-image: url("https://i.imgur.com/pSUcCst.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 24px 24px !important;
+  translate: 3% !important;
+}
+
+:is(.betklma, .betklmc, .betklm4, .betklm5, .betklm6, .betklm7) svg :is(path, g) {
+  display: none !important;
+  fill: none !important;
+  stroke: none !important;
+}
+
+:is(.betklma, .betklm6) svg {
+  transform: rotate(180deg) !important;
+}
+
+:is(.betklmc, .betklm5) svg {
+  transform: rotate(0deg) !important;
+}
+
+/* 8) Generated by AI badges */
+/* Generated by AI icon */
+.vfrc-icon._1t7e06e0._11kfxpg8 svg {
+  visibility: hidden !important;
+}
+
+.vfrc-icon._1t7e06e0._11kfxpg8::after {
+  content: '' !important;
+  display: inline-block !important;
+  width: 24px !important;
+  height: 24px !important;
+  background-image: url('https://i.imgur.com/PfBnfZz.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  transform: translate(-74%, -18%) !important;
+}
+
+/* Generated by AI text */
+._11kfxpg7 {
+  display: inline-block !important;
+  transform: translateX(-10%) !important;
+  font-size: 11.5px !important;
+  color: #FFF !important;
+}
+
+._11kfxpg6 {
+  background-color: #2E2D2C !important;
+  border-radius: 0 0 15px 15px !important;
+}
+
+/* 9) Utilities */
+/* Widget scroll button */
+._1cosygz0 {
+  background-color: #FFF !important;
+  background-image: url("https://i.imgur.com/BD4geVD.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 20px 20px !important;
+  border: solid 1.5px #000 !important;
+}
+  
+._1cosygz0 svg {
+  opacity: 0 !important;
+}
+
+/* Footer logo (Creator) */
+.jsli365 {
+  display: inline-block !important;
+  width: 130px !important;
+  height: 35px !important;
+  background-image: url("https://i.imgur.com/vZRdOvl.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  text-indent: 9999px !important;
+  overflow: hidden !important;
+  -webkit-user-drag: none !important;
+  transition: transform 0.6s ease, filter 0.8s ease !important;
+}
+
+.jsli365:hover {
+  transform: scale(1.05) !important;
+  filter: brightness(1) !important;
+}
+
+.jsli365:focus-visible {
+  outline: 2px solid rgba(0,0,0,0.25) !important;
+  outline-offset: 2px !important;
+  transform: scale(1.05) !important;
+  filter: brightness(1) !important;
+}
