@@ -1,0 +1,1193 @@
+/* TrixTech s.r.o. @2026 */
+
+/* 0) LAYERING */
+/* 0.1) Keep the chat widget above all page content */
+.vfrc-widget {
+  z-index: 999999 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/* 1) HEADER SETTINGS + AVATAR */
+/* 1.1) Header color */
+.vfrc-header.vfrc-header.vfrc-header {
+  background: var(--header-bg) !important;
+  padding: var(--header-padding) !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  border: var(--header-border) !important;
+  border-radius: var(--header-border-radius) !important;
+  box-shadow: var(--header-box-shadow) !important;
+  z-index: var(--header-z-index) !important;
+}
+
+/* 1.2) Header avatar */
+.vfrc-header img.vfrc-avatar {
+  height: var(--header-avatar-height) !important;
+  max-height: var(--header-avatar-max-height) !important;
+  border-radius: var(--header-avatar-radius) !important;
+  display: block !important;
+  width: auto !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+  -webkit-user-drag: none !important;
+}
+
+
+/* 2) HEADER ICONS */
+/* 2.1) Basic settings for icon buttons */
+.vfrc-header [class*="vfrc-header--icon"] {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: translateX(-0.25px) !important;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.vfrc-header [class*="vfrc-header--icon"] svg {
+  display: none !important;
+}
+
+.vfrc-header [class*="vfrc-header--icon"]::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: var(--icon-base-transform) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  filter: var(--icon-base-filter) !important;
+  transition: var(--icon-transition) !important;
+  will-change: transform, filter;
+  pointer-events: none !important;
+}
+
+/* 2.2) Icon button dimensions */
+.vfrc-header button {
+  width: var(--icon-btn-size) !important;
+  height: var(--icon-btn-size) !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.vfrc-header button:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--icon-focus-color) !important;
+  border-radius: var(--icon-focus-radius) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vfrc-header [class*="vfrc-header--icon"]::before {
+    transition: transform .01ms linear, filter .01ms linear !important;
+  }
+}
+
+/* 2.3) Refresh icon settings */
+.vfrc-header button:nth-of-type(1) [class*="vfrc-header--icon"]::before {
+  width: var(--icon-refresh-size) !important;
+  height: var(--icon-refresh-size) !important;
+  background-image: var(--icon-refresh-url) !important;
+}
+
+.vfrc-header button:nth-of-type(1):hover [class*="vfrc-header--icon"]::before,
+.vfrc-header button:nth-of-type(1):focus-visible [class*="vfrc-header--icon"]::before {
+  transform: var(--icon-refresh-hover-transform) !important;
+  filter: var(--icon-hover-filter) !important;
+}
+
+/* 2.4) Close icon settings */
+.vfrc-header button:nth-of-type(2) [class*="vfrc-header--icon"]::before {
+  width: var(--icon-close-size) !important;
+  height: var(--icon-close-size) !important;
+  background-image: var(--icon-close-url) !important;
+}
+
+.vfrc-header button:nth-of-type(2):hover [class*="vfrc-header--icon"]::before,
+.vfrc-header button:nth-of-type(2):focus-visible [class*="vfrc-header--icon"]::before {
+  transform: var(--icon-close-hover-transform) !important;
+  filter: var(--icon-hover-filter) !important;
+}
+
+
+/* 3) SYSTEM BUTTONS (START NEW CHAT / CANCEL) */
+/* 3.1) Shared properties (reset and shape) */
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat, button.vfrc-button[label="Cancel"]) {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--btn-radius) !important;
+  padding: var(--btn-padding) !important;
+  line-height: 1 !important;
+  font-family: var(--_1bof89na) !important;
+  font-weight: var(--btn-font-weight) !important;
+  font-size: var(--btn-font-size) !important;
+  letter-spacing: var(--btn-letter-spacing) !important;
+  color: transparent !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat, button.vfrc-button[label="Cancel"]) span {
+  display: none !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat, button.vfrc-button[label="Cancel"])::before {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+}
+
+/* 3.2) Start new chat button */
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat) {
+  background: var(--btn-start-bg) !important;
+  border: var(--btn-border-width) solid var(--btn-start-border) !important;
+  transition: var(--btn-start-transition) !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat)::before {
+  content: var(--btn-start-text) !important;
+  color: var(--btn-start-text-color) !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat)::after {
+  content: "" !important;
+  display: var(--btn-shine-display) !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -35% !important;
+  width: 70% !important;
+  height: 100% !important;
+  background: linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.32) 50%, rgba(255,255,255,0) 100%) !important;
+  transform: translateX(260%) skewX(-24deg) !important;
+  opacity: 0 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 1ms linear .96s !important;
+  pointer-events: none !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat):hover {
+  background: var(--btn-start-bg-hover) !important;
+  border-color: var(--btn-start-border-hover) !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat):hover::before {
+  color: var(--btn-start-text-color-hover) !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat):hover::after {
+  transform: translateX(-260%) skewX(-24deg) !important;
+  opacity: 1 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 120ms ease 0s !important;
+}
+
+:is(button.vfrc-button[label="Start new chat"], #vfrc-start-chat):focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px var(--btn-focus-shadow) !important;
+}
+
+/* 3.3) Cancel button */
+button.vfrc-button[label="Cancel"] {
+  background: var(--btn-cancel-bg) !important;
+  border: var(--btn-cancel-border-width) solid var(--btn-cancel-border) !important;
+}
+
+button.vfrc-button[label="Cancel"]::before {
+  content: var(--btn-cancel-text) !important;
+  color: var(--btn-cancel-text-color) !important;
+}
+
+button.vfrc-button[label="Cancel"]:hover {
+  background: var(--btn-cancel-bg-hover) !important;
+  border-color: var(--btn-cancel-border-hover) !important;
+}
+
+button.vfrc-button[label="Cancel"]:hover::before {
+  color: var(--btn-cancel-text-color-hover) !important;
+}
+
+button.vfrc-button[label="Cancel"]:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px var(--btn-focus-shadow) !important;
+}
+
+
+/* 4) SUBHEADING TEXTS AND ICON FORMATTING */
+/* 4.1) Subheader icon formatting */
+.vfrc-assistant-info {
+  padding: var(--subheader-padding) !important;
+}
+
+.vfrc-assistant-info--avatar-container {
+  box-shadow: none !important;
+  border: none !important;
+  background-color: transparent !important;
+  clip-path: var(--subheader-avatar-clip) !important;
+  -webkit-user-drag: none !important;
+  pointer-events: none !important;
+}
+
+/* 4.2) Subheader text formatting */
+.vfrc-assistant-info--title {
+  color: transparent !important;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 20px !important;
+}
+
+.vfrc-assistant-info--title::before {
+  content: var(--subheader-title-text) !important;
+  font-size: var(--subheader-title-size) !important;
+  color: var(--subheader-text-color) !important;
+  font-weight: var(--subheader-title-weight) !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  text-align: var(--subheader-title-align) !important;
+  pointer-events: none !important;
+}
+
+/* 4.3) Subheader description formatting */
+.vfrc-assistant-info--description {
+  color: transparent !important;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 18px !important;
+}
+
+.vfrc-assistant-info--description::before {
+  content: var(--subheader-desc-text) !important;
+  font-size: var(--subheader-desc-size) !important;
+  color: var(--subheader-text-color) !important;
+  font-weight: var(--subheader-desc-weight) !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  text-align: var(--subheader-desc-align) !important;
+  pointer-events: none !important;
+}
+
+
+/* 5) CHATBOT BACKGROUND & FOOTER */
+/* 5.1) Chatbot background */
+.vfrc-chat {
+  background-image: var(--chat-bg-image) !important;
+  background-size: var(--chat-bg-size) !important;
+  background-repeat: var(--chat-bg-repeat) !important;
+  background-position: var(--chat-bg-position) !important;
+  background-color: var(--chat-bg-color-overlay) !important;
+}
+
+/* 5.2) Transparent Footer Wrapper */
+.vfrc-footer {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 5.3) Start Button Overlay (White Area) */
+.vfrc-footer__start-button {
+  background: var(--footer-start-btn-bg) !important;
+  background-image: var(--footer-start-btn-bg-image) !important;
+  box-shadow: var(--footer-start-btn-shadow) !important;
+  border: var(--footer-start-btn-border) !important;
+  opacity: var(--footer-start-btn-opacity) !important;
+  display: flex !important;
+}
+
+/* 5.4) Standard Chat Footer (Input Area) */
+.vfrc-footer__content {
+  background: var(--footer-bg-color) !important;
+  border: none !important;
+}
+
+/* 5.5) Content Cleanup */
+.vfrc-footer__content > div,
+.vfrc-footer__content-scroll-to-bottom {
+  background: transparent !important;
+}
+
+
+/* 6) CHATBOT AVATAR */
+/* 6.1) Chatbot avatar customization */
+:is(.vfrc-system-response, div[class*="typing-indicator"]) .vfrc-avatar {
+  width: var(--chat-avatar-width) !important;
+  height: var(--chat-avatar-height) !important;
+  border-radius: var(--chat-avatar-radius) !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  background-color: transparent !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  -webkit-user-drag: none !important;
+  pointer-events: none !important;
+}
+
+
+/* 7) CHAT BUBBLES & TYPOGRAPHY */
+/* 7.1) General Text Alignment */
+.vfrc-message, .vfrc-message * {
+  text-align: var(--message-text-align) !important;
+}
+
+.vfrc-message > * {
+  margin-left: var(--message-margin-left) !important;
+}
+
+/* 7.2) User Message Container */
+div[class*="vfrc-user-response"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+}
+
+/* 7.3) Shared Bubble Radius (User & System) */
+div[class*="vfrc-user-response"] > div,
+.vfrc-system-response .vfrc-message,
+div[class*="vfrc-typing-indicator--container-inner"] {
+  border-radius: var(--chat-bubble-radius) !important;
+}
+
+/* 7.4) User Message Specifics */
+div[class*="vfrc-user-response"] > div {
+  background-color: var(--user-msg-bg) !important;
+  color: var(--user-msg-text-color) !important;
+  font-weight: var(--user-msg-weight) !important;
+  font-size: var(--user-msg-size) !important;
+  padding: var(--user-msg-padding) !important;
+  width: var(--user-msg-width) !important;
+  box-shadow: var(--user-msg-shadow) !important;
+  border: var(--user-msg-border) !important;
+}
+
+/* 7.5) Assistant Message Specifics */
+.vfrc-system-response .vfrc-message {
+  font-size: var(--system-msg-size) !important;
+  line-height: var(--system-msg-line-height) !important;
+  color: var(--system-msg-text-color) !important;
+  font-weight: var(--system-msg-weight) !important;
+  font-family: var(--_1bof89na) !important;
+  letter-spacing: var(--system-msg-letter-spacing) !important;
+}
+
+
+/* 8) MAIN INTERACTION BUTTONS */
+/* 8.1) Buttons container alignment & spacing */
+div[class*="vfrc-system-response--actions"] {
+  padding-left: var(--main-btn-container-padding) !important;
+  justify-content: var(--main-btn-alignment) !important;
+  flex-wrap: var(--main-btn-flex-wrap) !important;
+  gap: var(--main-btn-gap) !important;
+}
+
+/* 8.2) Main buttons styling */
+div[class*="vfrc-system-response--actions"] button[class*="vfrc-button"] {
+  font-size: var(--main-btn-font-size) !important;
+  font-weight: var(--main-btn-font-weight) !important;
+  letter-spacing: var(--main-btn-letter-spacing) !important;
+  color: var(--main-btn-text-color) !important;
+  height: var(--main-btn-height) !important;
+  padding: var(--main-btn-padding) !important;
+  margin: var(--main-btn-margin) !important;
+  background: var(--main-btn-bg) !important;
+  border: var(--main-btn-border) !important;
+  border-radius: var(--main-btn-radius) !important;
+  box-shadow: var(--main-btn-shadow) !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: var(--main-btn-overflow) !important;
+  cursor: var(--main-btn-cursor) !important;
+  transition: var(--main-btn-transition) !important;
+  line-height: var(--main-btn-line-height) !important;
+  font-family: var(--_1bof89na) !important;
+}
+
+/* 8.3) Shine effect */
+div[class*="vfrc-system-response--actions"] button[class*="vfrc-button"]::after {
+  content: "" !important;
+  display: var(--main-btn-shine-display) !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -35% !important;
+  width: 70% !important;
+  height: 100% !important;
+  background: linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.32) 50%, rgba(255,255,255,0) 100%) !important;
+  transform: translateX(260%) skewX(-24deg) !important;
+  opacity: 0 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 1ms linear .96s !important;
+  pointer-events: none !important;
+  will-change: transform, opacity !important;
+}
+
+/* 8.4) Hover effects */
+div[class*="vfrc-system-response--actions"] button[class*="vfrc-button"]:hover {
+  background: var(--main-btn-bg-hover) !important;
+  color: var(--main-btn-text-color-hover) !important;
+  border: var(--main-btn-border-hover) !important;
+}
+
+div[class*="vfrc-system-response--actions"] button[class*="vfrc-button"]:hover::after {
+  transform: translateX(-260%) skewX(-24deg) !important;
+  opacity: 1 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 120ms ease 0s !important;
+}
+
+/* 8.5) Focus state */
+div[class*="vfrc-system-response--actions"] button[class*="vfrc-button"]:focus-visible {
+  outline: var(--main-btn-focus-outline) !important;
+  box-shadow: var(--main-btn-focus-shadow) !important;
+}
+
+/* 8.6) JS replaced icons */
+.custom-js-icon {
+  display: var(--js-icon-display) !important;
+  width: calc(var(--js-icon-size) * var(--icon-scale)) !important;
+  height: calc(var(--js-icon-size) * var(--icon-scale)) !important;
+  --icon-current: var(--icon-normal) !important;
+  background-image: var(--icon-current) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  flex-shrink: 0 !important;
+  margin: 0 var(--js-icon-gap) 0 0 !important;
+  transition: background-image 0.2s ease-in-out, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+button.vfrc-button:hover .custom-js-icon {
+  --icon-current: var(--icon-hover) !important;
+  transform: scale(var(--global-hover-scale)) !important;
+}
+
+button.vfrc-button.has-custom-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-left: var(--js-btn-padding-left) !important;
+}
+
+
+/* 9) SYSTEM STATES */
+/* 9.1) Status container */
+.vfrc-chat--status {
+  margin-top: var(--system-status-margin-top) !important;
+  margin-bottom: var(--system-status-margin-bottom) !important;
+}
+
+/* 9.2) Status text element */
+.vfrc-chat--status > div > div:nth-child(2) {
+  font-size: var(--system-status-font-size-reset) !important;
+  color: transparent !important;
+  position: relative !important;
+  background: var(--system-status-bg) !important;
+  padding: var(--system-status-padding) !important;
+}
+
+/* 9.3) Status text injection */
+.vfrc-chat--status > div > div:nth-child(2)::before {
+  content: var(--system-status-text) !important;
+  font-size: var(--system-status-size) !important;
+  font-weight: var(--system-status-weight) !important;
+  color: var(--system-status-color) !important;
+  visibility: visible !important;
+  white-space: nowrap !important;
+  line-height: var(--system-status-line-height) !important;
+}
+
+/* 9.4) Status divider lines */
+.vfrc-chat--status > div > div:first-child,
+.vfrc-chat--status > div > div:last-child {
+  background-color: var(--system-status-line-color) !important;
+  opacity: 1 !important;
+}
+
+
+/* 10) CAROUSEL */
+/* 10.1) Card container */
+div[class*="vfrc-card"]:not([class*="vfrc-card--header"]):not([class*="vfrc-card--description"]) {
+  background-color: var(--card-bg-color) !important;
+  border-radius: var(--card-radius) !important;
+  border: var(--card-border) !important;
+  overflow: var(--card-overflow) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* 10.2) Card image */
+div[class*="vfrc-card"] img {
+  display: block !important;
+  width: var(--card-img-width) !important;
+  margin: var(--card-img-margin) !important;
+  height: var(--card-img-height) !important;
+  object-fit: var(--card-img-fit) !important;
+  border-radius: var(--card-img-radius) !important;
+  box-sizing: border-box !important;
+  -webkit-user-drag: none !important;
+  box-shadow: none !important;
+}
+
+/* 10.3) Card header */
+div[class*="vfrc-card--header"] {
+  font-family: var(--_1bof89na) !important;
+  font-size: var(--card-header-size) !important;
+  font-weight: var(--card-header-weight) !important;
+  color: var(--card-header-color) !important;
+  letter-spacing: var(--card-header-spacing) !important;
+  padding: var(--card-header-padding) !important;
+  margin-top: var(--card-header-margin-top) !important;
+  line-height: var(--card-header-line-height) !important;
+}
+
+/* 10.4) Card description */
+div[class*="vfrc-card--description"] {
+  font-family: var(--_1bof89na) !important;
+  font-size: var(--card-desc-size) !important;
+  color: var(--card-desc-color) !important;
+  line-height: var(--card-desc-line-height) !important;
+  padding: var(--card-desc-padding) !important;
+  font-weight: var(--card-desc-weight) !important;
+  letter-spacing: var(--card-desc-letter-spacing) !important;
+}
+
+/* 10.5) Card content wrapper */
+div[class*="vfrc-card--content"] {
+  padding: var(--card-content-padding) !important;
+  width: 100% !important;
+}
+
+/* 10.6) Card button styling */
+div[class*="vfrc-card"] button,
+div[class*="vfrc-card"] .vfrc-button {
+  height: var(--card-btn-height) !important;
+  font-size: var(--card-btn-font-size) !important;
+  font-weight: var(--card-btn-font-weight) !important;
+  letter-spacing: var(--card-btn-spacing) !important;
+  color: var(--card-btn-text-color) !important;
+  padding-top: var(--card-btn-padding-top) !important;
+  line-height: var(--card-btn-line-height) !important;
+  font-family: var(--_1bof89na) !important;
+  background: var(--card-btn-bg) !important;
+  border: var(--card-btn-border) !important;
+  border-radius: var(--card-btn-radius) !important;
+  box-shadow: var(--card-btn-shadow) !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: var(--card-btn-overflow) !important;
+  cursor: var(--card-btn-cursor) !important;
+  transition: var(--card-btn-transition) !important;
+}
+
+/* 10.7) Card button hover */
+div[class*="vfrc-card"] button:hover,
+div[class*="vfrc-card"] .vfrc-button:hover {
+  background: var(--card-btn-bg-hover) !important;
+  border: var(--card-btn-border-hover) !important;
+  color: var(--card-btn-text-color-hover) !important;
+}
+
+/* 10.8) Card button shine effect */
+div[class*="vfrc-card"] button::after,
+div[class*="vfrc-card"] .vfrc-button::after {
+  content: "" !important;
+  position: absolute !important;
+  display: var(--card-btn-shine-display) !important;
+  top: 0 !important;
+  left: -35% !important;
+  width: 70% !important;
+  height: 100% !important;
+  background: var(--card-btn-shine-color) !important;
+  transform: translateX(260%) skewX(-24deg) !important;
+  opacity: 0 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 1ms linear .96s !important;
+  pointer-events: none !important;
+}
+
+div[class*="vfrc-card"] button:hover::after,
+div[class*="vfrc-card"] .vfrc-button:hover::after {
+  transform: translateX(-260%) skewX(-24deg) !important;
+  opacity: 1 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 120ms ease 0s !important;
+}
+
+/* 10.9) Card button focus state */
+div[class*="vfrc-card"] button:focus-visible,
+div[class*="vfrc-card"] .vfrc-button:focus-visible {
+  outline: var(--card-btn-focus-outline) !important;
+  box-shadow: var(--card-btn-focus-shadow) !important;
+}
+
+/* 10.10) Card button icon */
+div[class*="vfrc-card"] button::before,
+div[class*="vfrc-card"] .vfrc-button::before {
+  content: "" !important;
+  display: var(--card-btn-icon-display) !important;
+  width: var(--card-btn-icon-size) !important;
+  height: var(--card-btn-icon-size) !important;
+  min-width: var(--card-btn-icon-size) !important;
+  margin-right: var(--card-btn-icon-gap) !important;
+  background-image: var(--card-btn-icon-url) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+  transition: transform 0.2s ease !important;
+}
+
+div[class*="vfrc-card"] button:hover::before,
+div[class*="vfrc-card"] .vfrc-button:hover::before {
+  transform: translateX(var(--card-btn-icon-move)) !important;
+}
+
+/* 10.11) Carousel navigation button */
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"] {
+  width: var(--carousel-btn-size) !important;
+  height: var(--carousel-btn-size) !important;
+  min-width: var(--carousel-btn-size) !important;
+  max-width: var(--carousel-btn-size) !important;
+  border-radius: var(--carousel-btn-radius) !important;
+  background-color: var(--carousel-btn-bg) !important;
+  border: var(--carousel-btn-border) !important;
+  color: var(--carousel-btn-color) !important;
+  box-shadow: var(--carousel-btn-shadow) !important;
+  position: absolute !important;
+  z-index: var(--carousel-btn-z-index) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: opacity 0.2s, transform var(--carousel-btn-transition), background-color var(--carousel-btn-transition) !important;
+  cursor: pointer !important;
+}
+
+/* 10.12) Carousel button inner wrapper */
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"] > div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 10.13) Hide default arrow paths */
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"] svg path,
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"] svg g {
+  display: none !important;
+}
+
+/* 10.14) Carousel button icon */
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"] svg {
+  background-image: var(--carousel-icon-url) !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: var(--carousel-icon-inner-size) !important;
+  fill: none !important;
+  stroke: none !important;
+}
+
+/* 10.15) Carousel button rotation */
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"]:first-of-type svg {
+  transform: rotate(var(--carousel-rotate-left)) !important;
+}
+
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"]:last-of-type svg {
+  transform: rotate(var(--carousel-rotate-right)) !important;
+}
+
+/* 10.16) Carousel button disabled state */
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"]:disabled,
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"][disabled] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 10.17) Carousel button hover */
+div[class*="vfrc-carousel"] button[class*="vfrc-carousel--button"]:not(:disabled):hover {
+  background-color: var(--carousel-btn-bg-hover) !important;
+  border: var(--carousel-btn-border-hover) !important;
+  color: var(--carousel-btn-color-hover) !important;
+  transform: scale(var(--carousel-btn-scale-hover)) !important;
+  cursor: pointer !important;
+}
+
+
+/* 11) AI BADGE SETTINGS */
+/* 11.1) Icon styling */
+div[class*="system-response"] .vfrc-icon:not(.vfrc-carousel--button .vfrc-icon) {
+  display: inline-block !important;
+  width: var(--ai-icon-width) !important;
+  height: var(--ai-icon-height) !important;
+  background: var(--ai-icon-image) center / contain no-repeat !important;
+}
+
+div[class*="system-response"] .vfrc-icon:not(.vfrc-carousel--button .vfrc-icon) svg {
+  display: none !important;
+}
+
+/* 11.2) Container styling */
+div[class*="system-response"] div:has(> .vfrc-icon:not(.vfrc-carousel--button .vfrc-icon)) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  background: var(--ai-label-bg) !important;
+  border-radius: var(--ai-label-radius) !important;
+  padding: var(--ai-label-padding) !important;
+  gap: var(--ai-label-gap) !important;
+}
+
+/* 11.3) Text styling (content and typography from config) */
+div[class*="system-response"] .vfrc-icon:not(.vfrc-carousel--button .vfrc-icon) + span {
+  position: relative !important;
+  display: inline-block !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+}
+
+div[class*="system-response"] .vfrc-icon:not(.vfrc-carousel--button .vfrc-icon) + span::before {
+  content: var(--ai-badge-text) !important;
+  display: inline-block !important;
+  font-size: var(--ai-text-size) !important;
+  line-height: var(--ai-text-line-height) !important;
+  letter-spacing: var(--ai-text-letter-spacing) !important;
+  color: var(--ai-text-color) !important;
+  font-weight: var(--ai-text-weight) !important;
+}
+
+
+/* 12) UTILITIES */
+/* 12.1) Widget scroll button */
+button[class*="scroll-to-bottom"] {
+  background-color: var(--scroll-btn-bg-color) !important;
+  background-image: var(--scroll-btn-icon) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: var(--scroll-btn-size) !important;
+  border: var(--scroll-btn-border) !important;
+}
+
+button[class*="scroll-to-bottom"] svg {
+  display: none !important;
+}
+
+
+/* 13) FOOTER INPUT & SEND BUTTON */
+/* 13.1) Placeholder styling */
+div[class*="vfrc-input-container"] textarea::placeholder {
+  font-size: var(--input-placeholder-size) !important;
+  letter-spacing: var(--input-placeholder-spacing) !important;
+  position: relative !important;
+  display: flex !important;
+  color: var(--input-placeholder-color) !important;
+  opacity: var(--input-placeholder-opacity) !important;
+  font-weight: var(--input-placeholder-weight) !important;
+  font-family: var(--_1bof89na) !important;
+}
+
+/* 13.2) Input container wrapper */
+div[class*="vfrc-input-container"] {
+  position: relative !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  z-index: 1 !important;
+  box-sizing: border-box !important;
+  background-color: var(--input-bg-color) !important;
+  border: var(--input-border) !important;
+  border-radius: var(--input-radius) !important;
+  box-shadow: var(--input-shadow) !important;
+  transition: var(--input-transition) !important;
+}
+
+/* 13.3) User text typography */
+div[class*="vfrc-input-container"] textarea {
+  width: 100% !important;
+  scrollbar-width: var(--input-scrollbar-width) !important;
+  border-color: var(--input-textarea-border-color) !important;
+  resize: var(--input-resize) !important;
+  box-sizing: border-box !important;
+  outline: var(--input-outline) !important;
+  font-family: var(--_1bof89na) !important;
+  font-size: var(--input-font-size) !important;
+  line-height: var(--input-line-height) !important;
+  color: var(--input-text-color) !important;
+  padding: var(--input-text-padding) !important;
+}
+
+/* 13.4) Send button base styles */
+button[id="vfrc-send-message"] {
+  position: relative !important;
+  width: var(--send-btn-size) !important;
+  height: var(--send-btn-size) !important;
+  border-radius: var(--send-btn-radius) !important;
+  transition: var(--send-btn-transition) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: var(--send-btn-border) !important;
+}
+
+/* 13.5) Hide default Voiceflow icon */
+button[id="vfrc-send-message"] svg {
+  display: none !important;
+}
+
+/* 13.6) Custom icon injection */
+button[id="vfrc-send-message"]::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  margin: auto !important;
+  width: var(--send-icon-size) !important;
+  height: var(--send-icon-size) !important;
+  background-color: currentColor !important;
+  mask: var(--send-icon-url) no-repeat center / contain !important;
+  -webkit-mask: var(--send-icon-url) no-repeat center / contain !important;
+  pointer-events: none !important;
+}
+
+/* 13.7) Send button disabled state */
+button[id="vfrc-send-message"]:disabled {
+  background-color: var(--send-btn-disabled-bg) !important;
+  color: var(--send-btn-disabled-color) !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* 13.8) Send button enabled state */
+button[id="vfrc-send-message"]:not(:disabled) {
+  background-color: var(--send-btn-enabled-bg) !important;
+  color: var(--send-btn-enabled-color) !important;
+  box-shadow: var(--send-btn-shadow) !important;
+  cursor: pointer !important;
+}
+
+/* 13.9) Send button hover state */
+button[id="vfrc-send-message"]:not(:disabled):hover {
+  background-color: var(--send-btn-hover-bg) !important;
+  transform: scale(var(--send-btn-hover-scale)) !important;
+}
+
+/* 13.10) Send button active state */
+button[id="vfrc-send-message"]:not(:disabled):active {
+  transform: scale(1) !important;
+}
+
+/* 13.11) Microphone button styling */
+.vfrc-footer .vfrc-input-container button:not(#vfrc-send-message) {
+  transform: scale(1.3) !important;
+  margin-top: 4px !important;
+}
+
+
+/* 14) FOOTER LOGO */
+/* 14.1) Logo styling */
+a[href*="trixtech"],
+a[class*="footer_links-extra-text"] {
+  display: inline-block !important;
+  width: var(--footer-logo-width) !important;
+  height: var(--footer-logo-height) !important;
+  background: var(--footer-logo-image) center / contain no-repeat !important;
+  font-size: 0 !important;
+  overflow: hidden !important;
+  -webkit-user-drag: none !important;
+  transition: transform 0.6s ease, filter 0.8s ease !important;
+}
+
+a[href*="trixtech"]:hover,
+a[class*="footer_links-extra-text"]:hover {
+  transform: scale(1.05) !important;
+  filter: brightness(1) !important;
+}
+
+a[href*="trixtech"]:focus-visible,
+a[class*="footer_links-extra-text"]:focus-visible {
+  outline: 2px solid rgba(0,0,0,0.25) !important;
+  outline-offset: 2px !important;
+  transform: scale(1.05) !important;
+  filter: brightness(1) !important;
+}
+
+
+/* 15) LAUNCHER BUTTON */
+/* 15.1) Launcher base styles */
+.vfrc-launcher {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  border-radius: var(--launcher-border-radius) !important;
+  border: var(--launcher-border) !important;
+  transition: var(--launcher-transition) !important;
+  z-index: var(--launcher-z-index) !important;
+}
+
+/* 15.2) Launcher icons reset */
+.vfrc-launcher img,
+.vfrc-launcher svg {
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 15.3) Launcher open state */
+.vfrc-launcher[title="Otevřít chat"],
+.vfrc-launcher[title="Open chat agent"],
+.vfrc-launcher[aria-label="Otevřít chat"],
+.vfrc-launcher[aria-label="Open chat agent"] {
+  width: var(--launcher-open-width) !important;
+  height: var(--launcher-open-height) !important;
+  background-color: var(--launcher-open-bg) !important;
+  box-shadow: var(--launcher-open-shadow) !important;
+}
+
+/* 15.4) Launcher open icon */
+.vfrc-launcher[title="Otevřít chat"] img,
+.vfrc-launcher[title="Open chat agent"] img,
+.vfrc-launcher[title="Otevřít chat"] svg,
+.vfrc-launcher[title="Open chat agent"] svg {
+  width: var(--launcher-open-icon-size) !important;
+  height: var(--launcher-open-icon-size) !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* 15.5) Launcher open hover state */
+.vfrc-launcher[title="Otevřít chat"]:hover,
+.vfrc-launcher[title="Open chat agent"]:hover {
+  transform: scale(var(--launcher-open-hover-scale)) rotate(var(--launcher-open-hover-rotate)) !important;
+  background-color: var(--launcher-open-bg) !important;
+}
+
+/* 15.6) Launcher close state */
+.vfrc-launcher[title="Zavřít chat"],
+.vfrc-launcher[title="Close chat agent"],
+.vfrc-launcher[aria-label="Zavřít chat"],
+.vfrc-launcher[aria-label="Close chat agent"] {
+  width: var(--launcher-close-width) !important;
+  height: var(--launcher-close-height) !important;
+  background-color: var(--launcher-close-bg) !important;
+  box-shadow: var(--launcher-close-shadow) !important;
+}
+
+/* 15.7) Launcher close hide original content */
+.vfrc-launcher[title="Zavřít chat"] > *,
+.vfrc-launcher[title="Close chat agent"] > * {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* 15.8) Launcher close custom icon */
+.vfrc-launcher[title="Zavřít chat"]::before,
+.vfrc-launcher[title="Close chat agent"]::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: var(--launcher-close-icon-size) !important;
+  height: var(--launcher-close-icon-size) !important;
+  background-image: var(--launcher-close-icon-url) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  transform: translate(-50%, -50%) rotate(var(--launcher-close-rotate)) !important;
+  filter: brightness(0) invert(1) !important;
+  pointer-events: none !important;
+}
+
+/* 15.9) Launcher close hover state */
+.vfrc-launcher[title="Zavřít chat"]:hover,
+.vfrc-launcher[title="Close chat agent"]:hover {
+  transform: scale(var(--launcher-close-hover-scale)) !important;
+  background-color: var(--launcher-close-bg) !important;
+}
+
+/* 15.10) Proactive message card */
+.vfrc-proactive__card {
+  background-color: var(--proactive-bg) !important;
+  color: var(--proactive-text-color) !important;
+  border-radius: var(--proactive-border-radius) !important;
+  font-size: var(--proactive-font-size) !important;
+  font-weight: var(--proactive-font-weight) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+  padding: 12px 16px !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 16) PRIVACY POLICY WINDOW */
+/* 16.1) Privacy policy banner title */
+[class*="privacy"][class*="title"] {
+  font-family: var(--_1bof89na) !important;
+  font-size: var(--privacy-title-size) !important;
+  font-weight: var(--privacy-title-weight) !important;
+  line-height: var(--privacy-title-line-height) !important;
+  color: var(--privacy-title-color) !important;
+  text-align: var(--privacy-title-align) !important;
+  letter-spacing: var(--privacy-title-spacing) !important;
+  margin: var(--privacy-title-margin) !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* 16.2) Privacy policy banner text */
+[class*="privacy"][class*="description"] {
+  font-family: var(--_1bof89na) !important;
+  font-size: var(--privacy-text-size) !important;
+  line-height: var(--privacy-text-line-height) !important;
+  color: var(--privacy-text-color) !important;
+  text-align: var(--privacy-text-align) !important;
+  margin: var(--privacy-text-margin) !important;
+  display: block !important;
+  font-weight: var(--privacy-text-weight) !important;
+  letter-spacing: var(--privacy-text-letter-spacing) !important;
+}
+
+/* 16.3) Privacy policy banner icon container */
+div[class*="vfrc-privacy_secondary-button-icon"], [class*="secondary-button"][class*="icon"] {
+  position: relative !important;
+  width: var(--privacy-icon-size) !important;
+  height: var(--privacy-icon-size) !important;
+  min-width: var(--privacy-icon-size) !important;
+  min-height: var(--privacy-icon-size) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  margin: var(--privacy-icon-margin) !important;
+  transform: var(--privacy-icon-transform) !important;
+}
+
+/* 16.4) Hide default SVG icon */
+div[class*="vfrc-privacy_secondary-button-icon"] svg, [class*="secondary-button"][class*="icon"] svg {
+  display: none !important;
+}
+
+/* 16.5) Custom icon injection */
+div[class*="vfrc-privacy_secondary-button-icon"]::before, [class*="secondary-button"][class*="icon"]::before {
+  content: "" !important;
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: var(--privacy-icon-url) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* 16.6) Privacy buttons */
+/* 16.6.1) Common button styles */
+button[class*="privacy__primary-button"],
+button[class*="privacy__secondary-button"] {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--privacy-btn-radius) !important;
+  padding: var(--privacy-btn-padding) !important;
+  font-family: var(--_1bof89na) !important;
+  font-weight: var(--privacy-btn-weight) !important;
+  font-size: var(--privacy-btn-font-size) !important;
+  letter-spacing: var(--privacy-btn-spacing) !important;
+  line-height: var(--privacy-btn-line-height) !important;
+  transition: var(--privacy-btn-transition) !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+
+/* 16.6.2) Primary button base styles */
+button[class*="privacy__primary-button"] {
+  background: var(--privacy-pri-bg) !important;
+  color: var(--privacy-pri-text) !important;
+  border: var(--privacy-pri-border) !important;
+  overflow: hidden !important;
+}
+
+/* 16.6.3) Primary button hover state */
+button[class*="privacy__primary-button"]:hover {
+  background: var(--privacy-pri-bg-hover) !important;
+  border: var(--privacy-pri-border-hover) !important;
+  color: var(--privacy-pri-text-hover) !important;
+}
+
+/* 16.6.4) Primary button shine effect */
+button[class*="privacy__primary-button"]::after {
+  content: "" !important;
+  position: absolute !important;
+  display: var(--privacy-pri-shine-display) !important;
+  top: 0 !important;
+  left: -35% !important;
+  width: 70% !important;
+  height: 100% !important;
+  background: var(--privacy-pri-shine-color) !important;
+  transform: translateX(260%) skewX(-24deg) !important;
+  opacity: 0 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 1ms linear .96s !important;
+  pointer-events: none !important;
+}
+
+/* 16.6.5) Primary button shine effect hover */
+button[class*="privacy__primary-button"]:hover::after {
+  transform: translateX(-260%) skewX(-24deg) !important;
+  opacity: 1 !important;
+  transition: transform .95s cubic-bezier(.22,.61,.36,1), opacity 120ms ease 0s !important;
+}
+
+/* 16.6.6) Secondary button base styles */
+button[class*="privacy__secondary-button"] {
+  background: var(--privacy-sec-bg) !important;
+  border: var(--privacy-sec-border) !important;
+  color: var(--privacy-sec-text) !important;
+  background-image: none !important;
+}
+
+/* 16.6.7) Secondary button hover state */
+button[class*="privacy__secondary-button"]:hover {
+  background: var(--privacy-sec-bg-hover) !important;
+}
+
+
+/* 17) RESPONSIVE DESIGN & CONTAINER STABILITY */
+/* 17.1) Main chat container */
+div.vfrc-chat[class*="vfrc-chat"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  background-color: var(--chat-bg-color) !important;
+  border-radius: var(--chat-radius) !important;
+  box-shadow: var(--chat-shadow) !important;
+  border: none !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
