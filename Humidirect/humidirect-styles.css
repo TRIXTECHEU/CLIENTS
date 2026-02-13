@@ -1,0 +1,371 @@
+/* TrixTech s.r.o. @2026 */
+
+@import url('https://trixtecheu.github.io/CLIENTS/styles/default-chat-widget.css');
+
+:host {
+
+  /* 1) HEADER AND AVATAR */
+  /* 1.1) Header container */
+  --header-bg: #FFF;
+  --header-padding: 12px 16px 12px 12px;
+  --header-border: none;
+  --header-border-radius: 0;
+  --header-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --header-z-index: 10;
+
+  /* 1.2) Avatar image in header */
+  --header-avatar-height: 120%;
+  --header-avatar-max-height: 120%;
+  --header-avatar-radius: 0;
+
+
+  /* 2) HEADER ICONS (refresh, close) */
+  /* 2.1) Base icon settings */
+  --icon-base-transform: translate(-50%, -50%) scale(1);
+  --icon-base-filter: brightness(1);
+  --icon-transition: transform .6s ease-in-out, filter .8s ease-in-out;
+  --icon-btn-size: 40px;
+  --icon-focus-color: rgba(0, 123, 204, 0.35);
+  --icon-focus-radius: 8px;
+
+  /* 2.2) Refresh icon */
+  --icon-refresh-url: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/icons/icon-refresh.svg");
+  --icon-refresh-size: 38px;
+  --icon-refresh-hover-transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+
+  /* 2.3) Close icon */
+  --icon-close-url: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/icons/icon-close.svg");
+  --icon-close-size: 28px;
+  --icon-close-hover-transform: translate(-50%, -50%) scale(1.2);
+  --icon-hover-filter: brightness(1.1);
+
+
+  /* 3) SYSTEM BUTTONS (start new chat, cancel) */
+  /* 3.1) Shared button properties */
+  --btn-font-size: 14px;
+  --btn-font-weight: 700;
+  --btn-letter-spacing: 0.05em;
+  --btn-padding: 16px;
+  --btn-radius: 15px;
+  --btn-focus-shadow: rgba(0, 123, 204, .25);
+  --btn-border-width: 1px;
+
+  /* 3.2) Start button */
+  --btn-start-text: "SPUSTIT NOVÝ CHAT";
+  --btn-start-transition: background .2s ease;
+  /* Start - Default state */
+  --btn-start-bg: #017BC2;
+  --btn-start-text-color: #FFF;
+  --btn-start-border: #017BC2;
+  /* Start - Hover state */
+  --btn-start-bg-hover: #5eacd8;
+  --btn-start-text-color-hover: #FFF;
+  --btn-start-border-hover: #5eacd8;
+  /* Start - Shine effect */
+  --btn-shine-display: none;
+
+  /* 3.3) Cancel button */
+  /* Cancel - Default state */
+  --btn-cancel-text: "ZRUŠIT";
+  --btn-cancel-border-width: 1px;
+  --btn-cancel-bg: #FFFFFF;
+  --btn-cancel-text-color: #1A1E23;
+  --btn-cancel-border: #E5E7EB;
+  /* Cancel - Hover state */
+  --btn-cancel-bg-hover: #F7F7F7;
+  --btn-cancel-text-color-hover: #1A1E23;
+  --btn-cancel-border-hover: #E5E7EB;
+
+
+  /* 5) CHAT BACKGROUND AND FOOTER STRIP */
+  /* 5.1) Chat background */
+  --chat-bg-image: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/humidirect-background.jpg");
+  --chat-bg-size: cover;
+  --chat-bg-repeat: no-repeat;
+  --chat-bg-position: center center;
+  --chat-bg-color-overlay: transparent;
+
+  /* 5.2) Footer strip */
+  --footer-bg-color: transparent;
+
+  /* 5.3) Footer start button (in input area initially) */
+  --footer-start-btn-bg: #FFFFFF;
+  --footer-start-btn-bg-image: none;
+  --footer-start-btn-shadow: none;
+  --footer-start-btn-border: none;
+  --footer-start-btn-opacity: 1;
+
+
+  /* 6) CHATBOT AVATAR (next to assistant messages) */
+  --chat-avatar-width: 32px;
+  --chat-avatar-height: 32px;
+  --chat-avatar-radius: 50%;
+
+
+  /* 7) CHAT BUBBLES AND TEXT */
+  /* 7.1) Message container */
+  --message-text-align: left;
+  --message-margin-left: 0;
+  --chat-bubble-radius: 20px;
+
+  /* 7.2) User message (right side) */
+  --user-msg-bg: #017BC2;
+  --user-msg-text-color: #FFF;
+  --user-msg-weight: 700;
+  --user-msg-size: 14px;
+  --user-msg-padding: 12px 16px;
+  --user-msg-width: fit-content;
+  --user-msg-shadow: none;
+  --user-msg-border: none;
+
+  /* 7.3) System/Assistant message (left side) */
+  --system-msg-size: 14.5px;
+  --system-msg-line-height: 21px;
+  --system-msg-text-color: #464B52;
+  --system-msg-weight: normal;
+  --system-msg-letter-spacing: normal;
+
+
+  /* 8) MAIN ACTION BUTTONS (in assistant replies) */
+  /* 8.1) Button container */
+  --main-btn-container-padding: 45px;
+  --main-btn-alignment: flex-start;
+  --main-btn-flex-wrap: wrap;
+  --main-btn-gap: 8px;
+
+  /* 8.2) Button typography and geometry */
+  --main-btn-font-size: 14px;
+  --main-btn-font-weight: 700;
+  --main-btn-letter-spacing: .05em;
+  --main-btn-height: 40px;
+  --main-btn-padding: 22px 20px;
+  --main-btn-radius: 15px;
+  --main-btn-margin: 0;
+  --main-btn-shadow: none;
+  --main-btn-line-height: normal;
+  --main-btn-overflow: hidden;
+  --main-btn-cursor: pointer;
+  --main-btn-transition: background .2s ease, color .2s ease;
+  --main-btn-focus-outline: none;
+  --main-btn-focus-shadow: 0 0 0 3px rgba(0, 123, 204, 0.25);
+
+  /* 8.3) Default state */
+  --main-btn-bg: #017BC2;
+  --main-btn-text-color: #FFF;
+  --main-btn-border: 2px solid #FFF;
+
+  /* 8.4) Hover state */
+  --main-btn-bg-hover: #5eacd8;
+  --main-btn-text-color-hover: #FFF;
+  --main-btn-border-hover: 2px solid #FFF;
+
+  /* 8.5) Shine effect */
+  --main-btn-shine-display: none;
+
+  /* 8.6) JS replaced icons */
+  --js-icon-display: none;
+  --js-icon-size: 16px;
+  --icon-scale: 1;
+  --icon-normal: none;
+  --icon-hover: none;
+  --global-hover-scale: 1;
+  --js-icon-gap: 8px;
+  --js-btn-padding-left: 0;
+
+
+  /* 9) STATUS LINE (chat has ended) */
+  --system-status-margin-top: 15px;
+  --system-status-margin-bottom: 15px;
+  --system-status-font-size-reset: 0;
+  --system-status-text: "Chat byl ukončen";
+  --system-status-color: #656D75;
+  --system-status-size: 12.5px;
+  --system-status-weight: 600;
+  --system-status-line-height: 1.4;
+  --system-status-bg: transparent;
+  --system-status-padding: 0;
+  --system-status-line-color: #656D75;
+
+
+  /* 11) AI BADGE AND SCROLL BUTTON */
+  /* 11.1) AI badge */
+  --ai-icon-image: url('https://trixtecheu.github.io/CLIENTS/Humidirect/images/icons/icon-ai-sparkles.png');
+  --ai-icon-width: 22px;
+  --ai-icon-height: 22px;
+  --ai-label-bg: #444444;
+  --ai-label-radius: 0 0 20px 20px;
+  --ai-label-padding: 9px 16px 8px;
+  --ai-label-gap: 7px;
+  --ai-badge-text: "Odpověď byla generována pomocí AI";
+  --ai-text-color: #FFFFFF;
+  --ai-text-weight: 600;
+  --ai-text-size: 12px;
+  --ai-text-line-height: normal;
+  --ai-text-letter-spacing: normal;
+
+  /* 11.2) Scroll button */
+  --scroll-btn-bg-color: #FFF;
+  --scroll-btn-icon: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/icons/icon-scroll-down.svg");
+  --scroll-btn-size: 16px 16px;
+  --scroll-btn-border: 2px solid #017BC2;
+
+
+  /* 13) FOOTER INPUT AND SEND BUTTON */
+  /* 13.1) Input placeholder */
+  --input-placeholder-size: 14.5px;
+  --input-placeholder-spacing: 0.03em;
+  --input-placeholder-color: #464646;
+  --input-placeholder-opacity: 1;
+  --input-placeholder-weight: normal;
+
+  /* 13.2) Input container */
+  --input-bg-color: #FFFFFF;
+  --input-border: 1px solid #E2E4E5;
+  --input-radius: 25px;
+  --input-shadow: 0 3px 4px #00000005, 0 8px 42px -16px #00000014;
+  --input-transition: border .15s ease, box-shadow .15s ease, border-radius .15s ease, opacity .15s ease;
+  --input-scrollbar-width: none;
+  --input-textarea-border-color: transparent;
+  --input-resize: none;
+  --input-outline: transparent 0px;
+
+  /* 13.3) Input text */
+  --input-font-size: 14.5px;
+  --input-text-color: #1A1E23;
+  --input-line-height: 20px;
+  --input-text-padding: 2px 0 0;
+
+  /* 13.4) Send button - Geometry */
+  --send-btn-size: 36px;
+  --send-btn-radius: 50%;
+  --send-icon-size: 26px;
+  --send-icon-url: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/icons/icon-send.svg");
+  --send-btn-transition: all 0.2s ease;
+  --send-btn-border: none;
+
+  /* 13.5) Send button - Disabled state */
+  --send-btn-disabled-bg: #F1F2F2;
+  --send-btn-disabled-color: #656D75;
+
+  /* 13.6) Send button - Enabled state */
+  --send-btn-enabled-bg: #017BC2;
+  --send-btn-enabled-color: #FFFFFF;
+  --send-btn-shadow: 0 -1px rgba(0, 0, 0, 0.16) inset;
+
+  /* 13.7) Send button - Hover state */
+  --send-btn-hover-bg: #017BC2;
+  --send-btn-hover-scale: 1.05;
+
+
+  /* 14) FOOTER LOGO */
+  --footer-logo-image: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/badge-powered-by-trix-white.png");
+  --footer-logo-width: 150px;
+  --footer-logo-height: 35px;
+
+
+  /* 15) LAUNCHER BUTTON */
+  /* 15.1) Launcher base properties */
+  --launcher-border-radius: 50%;
+  --launcher-border: 2px solid #017BC2;
+  --launcher-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --launcher-z-index: 2147483647;
+
+  /* 15.2) Launcher - Open state (Default) */
+  --launcher-open-width: 80px;
+  --launcher-open-height: 80px;
+  --launcher-open-bg: #017BC2;
+  --launcher-open-shadow: none;
+  --launcher-open-icon-size: 70px;
+
+  /* 15.3) Launcher - Open state (Hover) */
+  --launcher-open-hover-scale: 1.05;
+  --launcher-open-hover-rotate: -5deg;
+
+  /* 15.4) Launcher - Close state (Default) */
+  --launcher-close-width: 50px;
+  --launcher-close-height: 50px;
+  --launcher-close-bg: #017BC2;
+  --launcher-close-shadow: none;
+  --launcher-close-icon-size: 32px;
+  --launcher-close-icon-color: #FFFFFF;
+  --launcher-close-icon-url: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/icons/icon-arrow-carousel.svg");
+  --launcher-close-rotate: 90deg;
+
+  /* 15.5) Launcher - Close state (Hover) */
+  --launcher-close-hover-scale: 1.05;
+
+  /* 15.6) Proactive message card */
+  --proactive-bg: #FFFFFF;
+  --proactive-text-color: #1a1e23;
+  --proactive-border-radius: 25px;
+  --proactive-font-size: 14px;
+  --proactive-font-weight: 400;
+
+
+  /* 16) PRIVACY POLICY WINDOW */
+  /* 16.1) Privacy title */
+  --privacy-title-size: 17px;
+  --privacy-title-weight: 700;
+  --privacy-title-line-height: 1.5;
+  --privacy-title-color: #1A1E23;
+  --privacy-title-align: center;
+  --privacy-title-spacing: -0.01em;
+  --privacy-title-margin: 0 0 12px 0;
+
+  /* 16.2) Privacy text */
+  --privacy-text-size: 14.5px;
+  --privacy-text-line-height: 1.5;
+  --privacy-text-color: #464B52;
+  --privacy-text-align: center;
+  --privacy-text-margin: 0;
+  --privacy-text-weight: normal;
+  --privacy-text-letter-spacing: normal;
+
+  /* 16.3) Privacy icon */
+  --privacy-icon-size: 22px;
+  --privacy-icon-url: url("https://trixtecheu.github.io/CLIENTS/Humidirect/images/icons/icon-lock.png");
+  --privacy-icon-margin: 0;
+  --privacy-icon-transform: translateY(0px);
+
+  /* 16.4) Privacy buttons - Shared properties */
+  --privacy-btn-radius: 15px;
+  --privacy-btn-padding: 12px 16px;
+  --privacy-btn-font-size: 14px;
+  --privacy-btn-weight: 700;
+  --privacy-btn-spacing: 0.05em;
+  --privacy-btn-line-height: 1.4;
+  --privacy-btn-transition: background .2s ease;
+
+  /* 16.5) Primary button (Accept) - Default state */
+  --privacy-pri-bg: #017BC2;
+  --privacy-pri-text: #FFFFFF;
+  --privacy-pri-border: 2px solid #FFF;
+
+  /* 16.6) Primary button (Accept) - Hover state */
+  --privacy-pri-bg-hover: #5eacd8;
+  --privacy-pri-text-hover: #FFFFFF;
+  --privacy-pri-border-hover: 2px solid #FFF;
+
+  /* 16.7) Primary button (Accept) - Shine effect */
+  --privacy-pri-shine-display: none;
+  --privacy-pri-shine-color: linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.32) 50%, rgba(255,255,255,0) 100%);
+
+  /* 16.8) Secondary button (Decline) - Default state */
+  --privacy-sec-bg: #FFFFFF;
+  --privacy-sec-text: #1A1E23;
+  --privacy-sec-border: 1px solid #E5E7EB;
+
+  /* 16.9) Secondary button (Decline) - Hover state */
+  --privacy-sec-bg-hover: #F7F7F7;
+
+
+  /* 17) RESPONSIVE DESIGN & CONTAINER STABILITY */
+  --chat-bg-color: #FFFFFF;
+  --chat-radius: 25px;
+  --chat-shadow: 0 0 0 1px rgba(22, 26, 30, 0.06), 0 8px 80px rgba(22, 26, 30, 0.16);
+
+
+  /* 18) LOADING ANIMATION SPINNER */
+  --spinner-color: #017BC2;
+
+}
