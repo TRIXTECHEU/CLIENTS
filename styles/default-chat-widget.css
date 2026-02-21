@@ -905,8 +905,8 @@ button[id="vfrc-send-message"]:not(:disabled):active {
 
 /* 13.11) Microphone button styling */
 .vfrc-footer .vfrc-input-container button:not(#vfrc-send-message) {
-  transform: scale(1.3) !important;
-  margin-top: 4px !important;
+  transform: scale(1.2) !important;
+  margin-top: 2px !important;
 }
 
 
