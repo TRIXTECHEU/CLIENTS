@@ -253,7 +253,7 @@ button.vfrc-button[label="Cancel"]:focus-visible {
 .vfrc-assistant-info--title::before {
   content: var(--subheader-title-text) !important;
   font-size: var(--subheader-title-size) !important;
-  color: var(--subheader-text-color) !important;
+  color: var(--subheader-title-color) !important;
   font-weight: var(--subheader-title-weight) !important;
   position: absolute !important;
   top: 0 !important;
@@ -276,7 +276,7 @@ button.vfrc-button[label="Cancel"]:focus-visible {
 .vfrc-assistant-info--description::before {
   content: var(--subheader-desc-text) !important;
   font-size: var(--subheader-desc-size) !important;
-  color: var(--subheader-text-color) !important;
+  color: var(--subheader-desc-color) !important;
   font-weight: var(--subheader-desc-weight) !important;
   position: absolute !important;
   top: 0 !important;
