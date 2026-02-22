@@ -256,7 +256,7 @@ button.vfrc-button[label="Cancel"]:focus-visible {
   color: var(--subheader-title-color) !important;
   font-weight: var(--subheader-title-weight) !important;
   position: absolute !important;
-  top: 0 !important;
+  top: -4px !important;
   left: 0 !important;
   width: 100% !important;
   text-align: var(--subheader-title-align) !important;
