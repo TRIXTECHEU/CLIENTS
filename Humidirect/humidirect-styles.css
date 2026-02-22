@@ -162,17 +162,7 @@
   /* 8.5) Shine effect */
   --main-btn-shine-display: none;
 
-  /* 8.6) JS replaced icons */
-  --js-icon-display: none;
-  --js-icon-size: 16px;
-  --icon-scale: 1;
-  --icon-normal: none;
-  --icon-hover: none;
-  --global-hover-scale: 1;
-  --js-icon-gap: 8px;
-  --js-btn-padding-left: 0;
-
-
+  
   /* 9) STATUS LINE (chat has ended) */
   --system-status-margin-top: 15px;
   --system-status-margin-bottom: 15px;
